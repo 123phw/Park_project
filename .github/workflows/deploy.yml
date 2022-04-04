@@ -1,0 +1,44 @@
+name: deploy
+
+on:
+  push:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout backend
+        uses: actions/checkout@v2
+
+      - name: checkout frontend
+        uses: actions/checkout@v2
+        with:
+          repository: Couch-Coders/프론트엔드 프로젝트
+          path: ./frontend
+
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: build frontend to resources
+        run: |
+          cd frontend
+          npm install
+          npm run build
+          cd ..
+          mkdir src/main/resources/static/
+          cp -r frontend/build/* src/main/resources/static/
+        env:
+          CI: ""
+
+      - name: deploy to heroku
+        uses: akhileshns/heroku-deploy@v3.12.12 #This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "parkproj"
+          heroku_email: "jaehi9810@gmail.com"
