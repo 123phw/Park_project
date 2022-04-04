@@ -14,7 +14,7 @@ jobs:
       - name: checkout frontend
         uses: actions/checkout@v2
         with:
-          repository: Couch-Coders/프론트엔드 프로젝트
+          repository: Couch-Coders/7th-park-fe
           path: ./frontend
 
       - uses: actions/setup-java@v2
