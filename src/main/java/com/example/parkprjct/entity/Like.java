@@ -16,14 +16,14 @@ public class Like {//공원좋아요(하트)
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "l_idx")
+    @Column(name = "l_idx", nullable = false)
     private Long lIdx;
 
-    @JoinColumn(name = "u_idx")
+    @JoinColumn(name = "u_idx", nullable = false)
     @OneToOne
     private Users uIdx;
 
-    @JoinColumn(name = "p_idx")
+    @JoinColumn(name = "p_idx", nullable = false)
     @OneToOne
     private Park pIdx;
 
