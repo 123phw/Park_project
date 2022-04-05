@@ -15,14 +15,14 @@ public class Good {//리뷰좋아요
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "g_idx")
+    @Column(name = "g_idx", nullable = false)
     private Long gIdx;
 
-    @JoinColumn(name = "u_idx")
+    @JoinColumn(name = "u_idx", nullable = false)
     @OneToOne
     private Users uIdx;
 
-    @JoinColumn(name = "r_idx")
+    @JoinColumn(name = "r_idx", nullable = false)
     @ManyToOne
     private Review rIdx;
 }

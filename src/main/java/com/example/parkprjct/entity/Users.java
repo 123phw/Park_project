@@ -22,20 +22,20 @@ public class Users {
     @Column(name = "u_idx", nullable = false)
     private Long uIdx;
 
-    @Column(name = "g_id")
+    @Column(name = "g_id", nullable = false)
     private String gId;
 
     @Column(name = "g_img")
     private String gImg;
 
-    @Column(name = "u_nickname")
+    @Column(name = "u_nickname", nullable = false)
     private String uNickname;
 
     @Column(name = "u_date")
     @CreationTimestamp
     private Timestamp uDate;
 
-    @Column(name = "u_isdel")
+    @Column(name = "u_isdel", nullable = false, columnDefinition = "boolean default false")
     private boolean uIsdel;
 
     @JsonIgnore

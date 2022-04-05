@@ -21,13 +21,13 @@ public class Park {
     @Column(name = "p_idx", nullable = false)
     private Long pIdx;
 
-    @Column(name = "p_name")
+    @Column(name = "p_name", nullable = false)
     private String pName;
 
     @Column(name = "p_addr")
     private String pAddr;
 
-    @Column(name = "p_img")
+    @Column(name = "p_img", nullable = false)
     private String pImg;
 
     @Column(name = "p_area")
@@ -36,10 +36,10 @@ public class Park {
     @Column(name = "p_site")
     private String pSite;
 
-    @Column(name = "p_desc")
+    @Column(name = "p_desc", length = 500)
     private String pDesc;
 
-    @Column(name = "p_avg_rate")
+    @Column(name = "p_avg_rate", nullable = false, columnDefinition = "decimal(10,1) default '0.0'")
     private double pAvgRate;
 
     @Column(name = "p_x")

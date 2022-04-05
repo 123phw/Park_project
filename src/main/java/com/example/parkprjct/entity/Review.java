@@ -23,20 +23,20 @@ public class Review {
     private Long rIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "u_idx")
+    @JoinColumn(name = "u_idx", nullable = false)
     private Users uIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "p_idx")
+    @JoinColumn(name = "p_idx", nullable = false)
     private Park pIdx;
 
-    @Column(name = "r_desc")
+    @Column(name = "r_desc", length = 1000)
     private String rDesc;
 
-    @Column(name = "r_rate")
+    @Column(name = "r_rate", nullable = false, columnDefinition = "int default '0'")
     private int rRate;
 
-    @Column(name = "r_like_cnt")
+    @Column(name = "r_like_cnt", nullable = false, columnDefinition = "int default '0'")
     private int rLikeCnt;
 
     @Column(name = "r_date")
