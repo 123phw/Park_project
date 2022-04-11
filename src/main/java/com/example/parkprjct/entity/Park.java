@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 //import java.math.BigDecimal;
 
@@ -27,7 +28,7 @@ public class Park {
     @Column(name = "p_addr")
     private String pAddr;
 
-    @Column(name = "p_img", nullable = false)
+    @Column(name = "p_img")
     private String pImg;
 
     @Column(name = "p_area")
@@ -36,29 +37,28 @@ public class Park {
     @Column(name = "p_site")
     private String pSite;
 
-    @Column(name = "p_desc", length = 500)
+    @Column(name = "p_desc", length = 1000)
     private String pDesc;
 
-    @Column(name = "p_avg_rate", nullable = false, columnDefinition = "decimal(10,1) default '0.0'")
-    private double pAvgRate;
+    @Column(name = "p_avg_rate", columnDefinition = "decimal(10,1) default '0.0'")
+    private BigDecimal pAvgRate;
 
     @Column(name = "p_x")
-    private float pX;
+    private BigDecimal pX;
     @Column(name = "p_y")
-    private float pY;
+    private BigDecimal pY;
 
     @JsonIgnore//Json으로 표현시 제외
     @OneToMany(mappedBy = "pIdx")
     private List<Review> reviews;
 
-    public Park(String pName, String pAddr, String pImg, String pArea, String pSite, String pDesc, double pAvgRate, float pX, float pY) {
+    public Park(String pName, String pAddr, String pImg, String pArea, String pSite, String pDesc, BigDecimal pX, BigDecimal pY) {
         this.pName = pName;
         this.pAddr = pAddr;
         this.pImg = pImg;
         this.pArea = pArea;
         this.pSite = pSite;
         this.pDesc = pDesc;
-        this.pAvgRate = pAvgRate;
         this.pX = pX;
         this.pY = pY;
     }
