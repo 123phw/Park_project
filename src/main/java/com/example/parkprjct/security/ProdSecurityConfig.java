@@ -16,4 +16,4 @@ public class ProdSecurityConfig extends SecurityConfigBase {
     public ProdSecurityConfig(UserService userService, FirebaseAuth firebaseAuth) {
         super(new FirebaseTokenFilter(userService, firebaseAuth));
     }
-}
+}*/

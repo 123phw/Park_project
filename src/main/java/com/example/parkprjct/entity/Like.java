@@ -1,4 +1,4 @@
-package com.example.parkprjct.entity;
+package com.project.parkproject.entity;
 
 
 import lombok.Getter;
