@@ -18,7 +18,7 @@ public class FirebaseInitializer {
     public FirebaseApp firebaseApp() throws IOException {
         log.info("Initializing Firebase.");
         FileInputStream serviceAccount =
-                new FileInputStream("/firebase.json");
+                new FileInputStream("C:\\Users\\withf\\IdeaProjects\\park-project\\firebase.json");
 
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
