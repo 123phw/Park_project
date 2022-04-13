@@ -1,9 +1,11 @@
 package com.project.parkproject.controller;
 
-import com.project.parkproject.domain.user.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.slf4j.Slf4j;
+
+import com.project.parkproject.entity.Users;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,8 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 public class UserController {
     @GetMapping("/me")
-    public User login(Authentication authentication) {
-        return (User) authentication.getPrincipal();
+    public Users login(Authentication authentication) {
+        return (Users) authentication.getPrincipal();
     }
 
 }

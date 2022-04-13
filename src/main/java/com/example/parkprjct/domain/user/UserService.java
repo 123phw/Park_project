@@ -14,8 +14,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
 
-import com.project.parkproject.domain.user.User;
 import com.project.parkproject.domain.user.UserRepository;
+import com.project.parkproject.entity.Users;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -33,17 +34,16 @@ import lombok.extern.slf4j.Slf4j;
 public class UserService implements UserDetailsService{
     private final UserRepository userRepository;
     private final FirebaseAuth firebaseAuth;
-    private final Bucket bucket;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findById(username)
+        return userRepository.findBygId(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username + " 유저를 찾을 수 없습니다."));
     }
 
     @Transactional
-    public User signupMock(SignupDTO signupDTO, String token) {
-        User user = User.builder().uid(token).name(signupDTO.getName()).build();
+    public Users signupMock(SignupDTO signupDTO, String token) {
+        Users user = Users.builder().gId(token).uNickname(signupDTO.getName()).build();
         userRepository.save(user);
         return user;
     }
