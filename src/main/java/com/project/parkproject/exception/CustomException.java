@@ -1,7 +1,6 @@
 package com.project.parkproject.exception;
 
 
-import com.google.firebase.ErrorCode;
 import lombok.Getter;
 
 @Getter

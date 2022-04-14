@@ -14,6 +14,7 @@ import com.project.parkproject.domain.user.UserRepository;
 import com.project.parkproject.entity.Users;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -43,6 +44,28 @@ public class UserService implements UserDetailsService{
         userRepository.save(user);
         return user;
     }
+
+    @Transactional
+    public Users signup(SignupDTO signupDTO, String token) {
+        String uid = verifyToken(token);
+        if(userRepository.findBygId(uid).isPresent()) {
+            throw new CustomException(ErrorCode.EXIST_MEMBER);
+        }
+        Users user = Users.builder().gId(uid).uNickname(signupDTO.getName()).build();
+        userRepository.save(user);
+        return user;
+    }
+
+    public String verifyToken(String token) {
+        try {
+            FirebaseToken firebaseToken = firebaseAuth.verifyIdToken(token);
+            return firebaseToken.getUid();
+        } catch (FirebaseAuthException e) {
+            log.error("invalid token", e);
+            throw new CustomException(ErrorCode.INVALID_AUTHORIZATION);
+        }
+    }
+
 
 
 }

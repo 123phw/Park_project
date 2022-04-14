@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class SignupDTO {
     private String name;
+    private String uid;
 }
