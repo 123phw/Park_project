@@ -2,9 +2,12 @@
 package com.example.parkprjct.domain.user;
 =======
 package com.project.parkproject.domain.user;
+<<<<<<< HEAD:src/main/java/com/example/parkprjct/domain/user/UserService.java
 >>>>>>> 7f0aa39 (Build: 로그인):src/main/java/com/project/parkproject/domain/user/UserService.java
 
 import java.io.IOException;
+=======
+>>>>>>> 2da38b6 (Fix: 로그인):src/main/java/com/project/parkproject/domain/user/UserService.java
 import com.project.parkproject.controller.SignupDTO;
 import com.project.parkproject.exception.CustomException;
 import com.project.parkproject.exception.ErrorCode;
@@ -13,7 +16,6 @@ import com.google.cloud.storage.Bucket;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
-
 import com.project.parkproject.domain.user.UserRepository;
 import com.project.parkproject.entity.Users;
 

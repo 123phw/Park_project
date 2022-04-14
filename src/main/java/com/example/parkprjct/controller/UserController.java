@@ -32,6 +32,7 @@ public class UserController {
         return (Users) authentication.getPrincipal();
     }
 
+
     @PostMapping("")
     public Users signup(@RequestBody SignupDTO signupDTO,
                        @RequestHeader("Authorization") String authorization) {
