@@ -1,4 +1,4 @@
-package com.project.parkproject.security.filter;
+package com.example.parkprjct.security.filter;
 
 import java.io.IOException;
 
@@ -7,8 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.project.parkproject.exception.CustomException;
-import com.project.parkproject.util.RequestUtil;
+import com.example.parkprjct.exception.CustomException;
+import com.example.parkprjct.util.RequestUtil;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;

@@ -1,4 +1,4 @@
-package com.project.parkproject.util;
+package com.example.parkprjct.util;
 
 import javax.servlet.http.HttpServletRequest;
 

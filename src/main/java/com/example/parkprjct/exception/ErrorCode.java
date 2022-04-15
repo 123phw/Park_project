@@ -1,4 +1,4 @@
-package com.project.parkproject.exception;
+package com.example.parkprjct.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

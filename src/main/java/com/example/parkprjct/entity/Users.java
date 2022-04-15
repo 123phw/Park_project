@@ -1,4 +1,4 @@
-package com.project.parkproject.entity;
+package com.example.parkprjct.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

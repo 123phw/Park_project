@@ -1,13 +1,13 @@
-package com.project.parkproject.controller;
+package com.example.parkprjct.controller;
 
-import com.project.parkproject.domain.user.UserService;
-import com.project.parkproject.util.RequestUtil;
+import com.example.parkprjct.domain.user.UserService;
+import com.example.parkprjct.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 
-import com.project.parkproject.entity.Users;
+import com.example.parkprjct.entity.Users;
 
 import org.springframework.security.core.Authentication;
 
@@ -37,11 +37,12 @@ public class UserController {
     public Users signup(@RequestBody SignupDTO signupDTO,
                        @RequestHeader("Authorization") String authorization) {
         String token = RequestUtil.getAuthorizationToken(authorization);
-        if(activeProfile.equals("local")) {
-            return userService.signupMock(signupDTO, token);
-        } else {
-            return userService.signup(signupDTO, token);
-        }
+        // if(activeProfile.equals("local")) {
+        //     return userService.signupMock(signupDTO, token);
+        // } else {
+        //     return userService.signup(signupDTO, token);
+        // }
+        return null;
     }
 
 }

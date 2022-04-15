@@ -1,7 +1,7 @@
-package com.project.parkproject.domain.user;
+package com.example.parkprjct.domain.user;
 
 import java.util.Optional;
-import com.project.parkproject.entity.Users;
+import com.example.parkprjct.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.project.parkproject.domain.user;
+package com.example.parkprjct.domain.user;
 
 import java.util.Collection;
 

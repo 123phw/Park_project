@@ -1,4 +1,4 @@
-package com.project.parkproject.config;
+package com.example.parkprjct.config;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;

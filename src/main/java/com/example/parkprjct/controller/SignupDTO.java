@@ -1,4 +1,4 @@
-package com.project.parkproject.controller;
+package com.example.parkprjct.controller;
 
 import lombok.Data;
 
