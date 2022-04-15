@@ -24,12 +24,12 @@ public class ParkRepositoryTest {
     @Autowired
     ParkRepository parkRepository;
 
-
+//    @Test
 //    public void save() throws Exception{
-//        BigDecimal value = new BigDecimal("3.2");
+//        BigDecimal value = new BigDecimal("2.0");
 //        BigDecimal xvalue = new BigDecimal("0.0");
 //        BigDecimal yvalue = new BigDecimal("0.0");
-//        Park park = new Park("서울숲공원", "서울시 성동구","dkjfwo.jpg", "성동구","httt://www...", "공원설명",xvalue,yvalue);
+//        Park park = new Park(value,"서울숲공원", "서울시 성동구","dkjfwo.jpg", "성동구","httt://www...", "공원설명",xvalue,yvalue);
 //        parkRepository.save(park);
 //    }
 
@@ -57,7 +57,6 @@ public class ParkRepositoryTest {
             JSONObject parkResult = (JSONObject) SearchParkInfoService.get("RESULT");
             JSONArray infoArr = (JSONArray) SearchParkInfoService.get("row");
 
-            //Park park = new Park("서울숲공원", "서울시 성동구","dkjfwo.jpg", "성동구","httt://www...", "공원설명",xvalue,yvalue);
             String pName, pAddr, pImg, pArea, pSite, pDesc;
             BigDecimal pX, pY, pAvgRate;
 
@@ -68,9 +67,12 @@ public class ParkRepositoryTest {
                 pArea = (String)tmp.get("P_ZONE");  pSite = (String)tmp.get("TEMPLATE_URL");    pDesc = (String)tmp.get("P_LIST_CONTENT");
                 pX = new BigDecimal((String)tmp.get("LONGITUDE"));  pY = new BigDecimal((String)tmp.get("LATITUDE"));
 
-                Park parkObj = new Park(pName, pAddr, pImg, pArea, pSite, pDesc, pX, pY);
-                parkRepository.save(parkObj);//DB에 파싱된 json데이터 넣기
+                //park객체 생성후 해당객체를 db에 저장
+                //Park parkObj = new Park(pName, pAddr, pImg, pArea, pSite, pDesc, pX, pY);
+                //parkRepository.save(parkObj);//DB에 파싱된 json데이터 넣기
 
+
+                //test
                 //api json이 잘 파싱되었는지 확인 및 출력 - ok:)
                 //BigDecimal xtest = new BigDecimal(tmp.get("LATITUDE").toString());
                 //String pnameTest = (String)tmp.get("P_LIST_CONTENT");
