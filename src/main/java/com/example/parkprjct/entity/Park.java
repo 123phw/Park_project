@@ -61,6 +61,7 @@ public class Park {
         this.pDesc = pDesc;
         this.pX = pX;
         this.pY = pY;
+        //this.pAvgRate = pAvgRate;
     }
 
 }
