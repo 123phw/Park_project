@@ -1,5 +1,4 @@
-package com.example.parkprjct.entity;
-
+package com.project.parkproject.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,20 +10,19 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "likes")
-public class Like {//공원좋아요(하트)
+@Table(name = "good")
+public class Good {//리뷰좋아요
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "l_idx", nullable = false)
-    private Long lIdx;
+    @Column(name = "g_idx", nullable = false)
+    private Long gIdx;
 
     @JoinColumn(name = "u_idx", nullable = false)
     @OneToOne
     private Users uIdx;
 
-    @JoinColumn(name = "p_idx", nullable = false)
-    @OneToOne
-    private Park pIdx;
-
+    @JoinColumn(name = "r_idx", nullable = false)
+    @ManyToOne
+    private Review rIdx;
 }

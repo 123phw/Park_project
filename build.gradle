@@ -30,11 +30,13 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+<<<<<<< HEAD
     implementation group :'org.postgresql', name: 'postgresql', version: '42.2.19'
 
     //querydsl
 //    implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
 //    implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
+    implementation group: 'com.google.firebase', name: 'firebase-admin', version: '8.0.1'
 
     // QueryDSL JPA
     implementation 'com.querydsl:querydsl-jpa'
@@ -42,6 +44,10 @@ dependencies {
     annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jpa"
     annotationProcessor "jakarta.persistence:jakarta.persistence-api"
     annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+=======
+    implementation group: 'com.google.firebase', name: 'firebase-admin', version: '8.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+>>>>>>> 2da38b60053e295672cbb7041c8c37aca6e94f07
 }
 //queryDSL JPA import에 문제 발생을 대비해 생성
 sourceSets {
@@ -70,6 +76,8 @@ configurations {
         extendsFrom annotationProcessor
     }
     querydsl.extendsFrom compileClasspath
+    implementation group: 'com.google.firebase', name: 'firebase-admin', version: '8.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 
 compileQuerydsl {
