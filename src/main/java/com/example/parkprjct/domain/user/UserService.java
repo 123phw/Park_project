@@ -35,17 +35,31 @@ public class UserService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // return userRepository.findById(username)
-        //         .orElseThrow(() -> new UsernameNotFoundException(username + " 유저를 찾을 수 없습니다."));
-        return null;
+        return userRepository.findBygId(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username + " 유저를 찾을 수 없습니다."));
     }
 
     @Transactional
     public Users signupMock(SignupDTO signupDTO, String token) {
-        // User user = Users.builder().uid(token).name(signupDTO.getName()).build();
-        // userRepository.save(user);
-        // return user;
-        return null;
+        Users user = Users.builder().gId(token).uNickname(signupDTO.getName()).build();
+        userRepository.save(user);
+        return user;
+    }
+
+    @Transactional
+    public Users signup(SignupDTO signupDTO, String token) {
+        try{
+            FirebaseToken firebaseToken =  firebaseAuth.verifyIdToken(token);
+
+            if(userRepository.findBygId(firebaseToken.getUid()).isPresent()) {
+                throw new CustomException(ErrorCode.EXIST_MEMBER);
+            }
+            
+            Users user = Users.builder().gId(firebaseToken.getUid()).uNickname(signupDTO.getName()).build();
+            return user;
+        } catch (FirebaseAuthException e) {
+            throw new CustomException(ErrorCode.INVALID_AUTHORIZATION);
+        }
     }
 
 

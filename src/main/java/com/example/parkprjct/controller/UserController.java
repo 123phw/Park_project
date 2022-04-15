@@ -37,12 +37,11 @@ public class UserController {
     public Users signup(@RequestBody SignupDTO signupDTO,
                        @RequestHeader("Authorization") String authorization) {
         String token = RequestUtil.getAuthorizationToken(authorization);
-        // if(activeProfile.equals("local")) {
-        //     return userService.signupMock(signupDTO, token);
-        // } else {
-        //     return userService.signup(signupDTO, token);
-        // }
-        return null;
+        if(activeProfile.equals("local")) {
+            return userService.signupMock(signupDTO, token);
+        } else {
+            return userService.signup(signupDTO, token);
+        }
     }
 
 }
