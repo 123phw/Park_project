@@ -7,12 +7,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 //@RequiredArgsConstructor
 @Service
@@ -21,7 +23,21 @@ public class ParkService {
     @Autowired
     private ParkRepository parkRepository;
 
-    public Page<ParkDto> getparkall(Pageable pageable){
+    //park db정보
+    public List<Park> ParkDB(Sort sort){
+        List<Park> parkList = parkRepository.findAll(sort);
+        return parkList;
+    }
+
+    public Page<Park> ParkDBPage(Pageable pageable){
+        return parkRepository.park(pageable);
+    }
+
+//    public List<ParkDto> getParkAll(Sort sort){
+//        List<Park> parkList = parkRepository.findAll(sort);
+//        return parkList.stream().map(ParkDto::new).collect(Collectors.toList());
+//    }
+    public Page<ParkDto> getParkAll(Pageable pageable){
 
         return parkRepository.parkList(pageable);
     }

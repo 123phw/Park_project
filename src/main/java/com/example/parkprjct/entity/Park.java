@@ -52,16 +52,17 @@ public class Park {
     @OneToMany(mappedBy = "pIdx")
     private List<Review> reviews;
 
-    public Park(String pName, String pAddr, String pImg, String pArea, String pSite, String pDesc, BigDecimal pX, BigDecimal pY) {
+    public Park(String pName, String pAddr, String pArea, String pImg, String pSite, String pDesc, BigDecimal pAvgRate, BigDecimal pX, BigDecimal pY) {
         this.pName = pName;
         this.pAddr = pAddr;
-        this.pImg = pImg;
         this.pArea = pArea;
+        this.pImg = pImg;
         this.pSite = pSite;
         this.pDesc = pDesc;
+        this.pAvgRate = pAvgRate;
         this.pX = pX;
         this.pY = pY;
-        //this.pAvgRate = pAvgRate;
+
     }
 
 }

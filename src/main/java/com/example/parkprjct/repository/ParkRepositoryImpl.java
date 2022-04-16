@@ -27,6 +27,14 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
         super(Park.class);
     }
 
+    @Override
+    public Page<Park> park(Pageable pageable){
+        JPQLQuery<Park> sortquery = queryFactory.selectFrom(QPark.park);
+
+        List<Park> parks = this.getQuerydsl().applyPagination(pageable, sortquery).fetch();
+        return new PageImpl<Park>(parks, pageable, sortquery.fetchCount());
+    }
+
     //공원목록(내림차순, 거리순 필터)
     @Override
     public Page<ParkDto> parkList(Pageable pageable){
@@ -114,8 +122,5 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
         return QPark.park.pName.containsIgnoreCase(pName);
         //문자열중 (pName)이 포함되어있는 pName을 리턴
     }
-
-
-
 
 }

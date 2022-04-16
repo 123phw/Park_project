@@ -9,6 +9,9 @@ import java.util.Optional;
 //queryDSL구현 기능
 public interface ParkReposiitoryCustom {
 
+    Page<Park> park(Pageable pageable);
+    //공원db
+
     Page<ParkDto> parkList(Pageable pageable);
     //공원목록(별점순, 거리순 정렬)
 

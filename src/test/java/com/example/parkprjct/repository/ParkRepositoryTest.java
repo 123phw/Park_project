@@ -33,7 +33,7 @@ public class ParkRepositoryTest {
 //        parkRepository.save(park);
 //    }
 
-   // @Test
+    @Test
     public void parkinfo_save() throws IOException {
 
         String result = "";
@@ -59,6 +59,7 @@ public class ParkRepositoryTest {
 
             String pName, pAddr, pImg, pArea, pSite, pDesc;
             BigDecimal pX, pY, pAvgRate;
+            pAvgRate = new BigDecimal("0.0");
 
             for (int i = 0; i < infoArr.size(); i++) {
                 JSONObject tmp = (JSONObject) infoArr.get(i);
@@ -66,10 +67,10 @@ public class ParkRepositoryTest {
                 pName = (String)tmp.get("P_PARK");  pAddr = (String)tmp.get("P_ADDR");  pImg = (String) tmp.get("P_IMG");
                 pArea = (String)tmp.get("P_ZONE");  pSite = (String)tmp.get("TEMPLATE_URL");    pDesc = (String)tmp.get("P_LIST_CONTENT");
                 pX = new BigDecimal((String)tmp.get("LONGITUDE"));  pY = new BigDecimal((String)tmp.get("LATITUDE"));
-
                 //park객체 생성후 해당객체를 db에 저장
-                //Park parkObj = new Park(pName, pAddr, pImg, pArea, pSite, pDesc, pX, pY);
-                //parkRepository.save(parkObj);//DB에 파싱된 json데이터 넣기
+
+                Park parkObj = new Park(pName, pAddr, pArea, pImg, pSite, pDesc, pAvgRate,pX, pY);
+                parkRepository.save(parkObj);//DB에 파싱된 json데이터 넣기
 
 
                 //test

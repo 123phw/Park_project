@@ -33,7 +33,7 @@ public class ParkDto {
         //this.pSite = park.getPSite();
         //this.pDesc = park.getPDesc();
         this.pAvgRate = park.getPAvgRate();
-        this.pX = pX;
-        this.pY = pY;
+        this.pX = park.getPX();
+        this.pY = park.getPY();
     }
 }
