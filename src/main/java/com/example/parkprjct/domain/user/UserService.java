@@ -5,12 +5,11 @@ import com.example.parkprjct.controller.SignupDTO;
 import com.example.parkprjct.exception.CustomException;
 import com.example.parkprjct.exception.ErrorCode;
 import com.google.cloud.storage.Blob;
-import com.google.cloud.storage.Bucket;
+//import com.google.cloud.storage.Bucket;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
 
-import com.example.parkprjct.domain.user.User;
 import com.example.parkprjct.domain.user.UserRepository;
 import com.example.parkprjct.entity.Users;
 
@@ -31,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserService implements UserDetailsService{
     private final UserRepository userRepository;
     private final FirebaseAuth firebaseAuth;
-    private final Bucket bucket;
+    //private final Bucket bucket;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
