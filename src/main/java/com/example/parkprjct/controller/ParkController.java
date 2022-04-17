@@ -2,19 +2,14 @@ package com.example.parkprjct.controller;
 
 import com.example.parkprjct.dto.ParkDto;
 import com.example.parkprjct.entity.Park;
-import com.example.parkprjct.repository.ParkRepository;
 import com.example.parkprjct.service.ParkService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
-
-import javax.print.DocFlavor;
 import java.util.List;
-import java.util.Optional;
 
 //api요청 받음
 @RestController
@@ -32,7 +27,6 @@ public class ParkController {
 
     @GetMapping("/db")//공원db 페이징
     public Page<Park> ParkDBPage(Pageable pageable){
-
         return parkService.ParkDBPage(pageable);
     }
 
