@@ -1,21 +1,17 @@
 package com.example.parkprjct.repository;
 
-import com.example.parkprjct.entity.Users;
+import com.example.parkprjct.entity.Review;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
-public class UsersRepositoryImpl extends QuerydslRepositorySupport {
+public class ReviewRepositoryImpl extends QuerydslRepositorySupport implements ReviewRepositoryCustom {
 
     @Autowired
     private JPAQueryFactory queryFactory;
-    private UsersRepository usersRepository;
+    private ReviewRepository reviewRepository;
 
-    public UsersRepositoryImpl(){
-        super(Users.class);
-    }
-
-
+    public ReviewRepositoryImpl(){ super(Review.class); }
 
 
 }
