@@ -13,5 +13,4 @@ public class ReviewRepositoryImpl extends QuerydslRepositorySupport implements R
 
     public ReviewRepositoryImpl(){ super(Review.class); }
 
-
 }

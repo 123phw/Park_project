@@ -36,7 +36,7 @@ public class Review {
     @Column(name = "r_rate", nullable = false, columnDefinition = "int default '0'")
     private int rRate;
 
-    @Column(name = "r_like_cnt", nullable = false, columnDefinition = "int default '0'")
+    @Column(name = "r_like_cnt", nullable = false)
     private int rLikeCnt;
 
     @Column(name = "r_date")
@@ -47,10 +47,10 @@ public class Review {
     @OneToMany(mappedBy = "rIdx")
     private List<Good> goods;
 
-    public Review(String rDesc, int rRate, int rLikeCnt) {
+    public Review(String rDesc, int rLikeCnt) {
         this.rDesc = rDesc;
-        this.rRate = rRate;
         this.rLikeCnt = rLikeCnt;
+
     }
 
 }
