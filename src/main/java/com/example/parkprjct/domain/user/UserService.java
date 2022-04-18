@@ -40,12 +40,12 @@ public class UserService implements UserDetailsService{
     public Users signup(SignupDTO signupDTO, String token) {
         try{
             FirebaseToken firebaseToken =  firebaseAuth.verifyIdToken(token);
-
             if(userRepository.findBygId(firebaseToken.getUid()).isPresent()) {
                 throw new CustomException(ErrorCode.EXIST_MEMBER);
             }
             
             Users user = Users.builder().gId(firebaseToken.getUid()).uNickname(signupDTO.getName()).build();
+            userRepository.save(user);
             return user;
         } catch (FirebaseAuthException e) {
             throw new CustomException(ErrorCode.INVALID_AUTHORIZATION);

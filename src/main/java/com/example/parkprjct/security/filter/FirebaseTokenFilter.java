@@ -34,7 +34,6 @@ public class FirebaseTokenFilter extends OncePerRequestFilter{
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        // get the token from the request
         FirebaseToken decodedToken;
         try{
             String header = RequestUtil.getAuthorizationToken(request.getHeader("Authorization"));
