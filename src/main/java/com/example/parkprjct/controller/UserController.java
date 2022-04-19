@@ -40,6 +40,7 @@ public class UserController {
         if(activeProfile.equals("local")) {
             return userService.signupMock(signupDTO, token);
         } else {
+            log.info("signDto :" + signupDTO);
             return userService.signup(signupDTO, token);
         }
     }
