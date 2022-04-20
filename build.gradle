@@ -1,32 +1,14 @@
-<<<<<<< HEAD
-=======
-//buildscript{//querydsl
-//    ext{
-//        queryDslVersion ="5.0.0"
-//    }
-//}
-//
-
->>>>>>> 59e6cc7 (build:초기설정)
 plugins {
     id 'org.springframework.boot' version '2.6.5'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-<<<<<<< HEAD
-=======
-    //querydsl
-   // id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
->>>>>>> 59e6cc7 (build:초기설정)
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 59e6cc7 (build:초기설정)
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -49,7 +31,6 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     implementation group :'org.postgresql', name: 'postgresql', version: '42.2.19'
-
     //Json데이터 객체로 변환
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
     //querydsl
