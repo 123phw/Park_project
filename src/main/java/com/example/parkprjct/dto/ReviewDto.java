@@ -22,9 +22,9 @@ public class ReviewDto {
     private String rDesc;
     private Timestamp rDate;
 
-    public ReviewDto(Review review, Users user){
+    public ReviewDto(Review review){
         this.rIdx = review.getRIdx();
-        this.uIdx = user.getUIdx();
+        this.uIdx = review.getUIdx();
         this.uNickname = user.getUNickname();
         this.gImg = user.getGImg();
         this.rLikeCnt = review.getRLikeCnt();
