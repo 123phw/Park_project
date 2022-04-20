@@ -1,6 +1,7 @@
 package com.example.parkprjct.domain.user;
 
 import com.example.parkprjct.controller.SignupDTO;
+import com.example.parkprjct.entity.Users;
 import com.example.parkprjct.exception.CustomException;
 import com.example.parkprjct.exception.ErrorCode;
 //import com.google.cloud.storage.Bucket;
@@ -20,8 +21,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
-@Slf4j
 @AllArgsConstructor
+@Slf4j
 public class UserService implements UserDetailsService{
     private final UserRepository userRepository;
     private final FirebaseAuth firebaseAuth;

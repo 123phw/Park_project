@@ -27,6 +27,7 @@ public class UserController {
         log.info("activeProfile: {}", activeProfile);
     }
 
+
     @GetMapping("/me")
     public Users login(Authentication authentication) {
         return (Users) authentication.getPrincipal();
@@ -44,5 +45,6 @@ public class UserController {
             return userService.signup(signupDTO, token);
         }
     }
+
 
 }
