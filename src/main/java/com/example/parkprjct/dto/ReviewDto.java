@@ -2,7 +2,6 @@ package com.example.parkprjct.dto;
 
 
 import com.example.parkprjct.entity.Review;
-import com.example.parkprjct.entity.Users;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +23,9 @@ public class ReviewDto {
 
     public ReviewDto(Review review){
         this.rIdx = review.getRIdx();
-        this.uIdx = review.getUIdx();
-        this.uNickname = user.getUNickname();
-        this.gImg = user.getGImg();
+        this.uIdx = review.getUIdx().getUIdx();
+        this.uNickname = review.getUIdx().getUNickname();
+        this.gImg = review.getUIdx().getGImg();
         this.rLikeCnt = review.getRLikeCnt();
         this.rDesc = review.getRDesc();
         this.rDate = review.getRDate();

@@ -13,8 +13,8 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
-    @GetMapping("reviews")
-    public
+//    @GetMapping("reviews")
+//    public
 
     @PostMapping("")//param?
     public void postReview(@RequestBody ReviewSaveRequestDto reviewSaveRequestDto,
