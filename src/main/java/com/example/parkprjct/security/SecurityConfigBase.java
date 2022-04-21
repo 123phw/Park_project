@@ -46,6 +46,7 @@ public class SecurityConfigBase extends WebSecurityConfigurerAdapter{
                 .antMatchers("/vendor/**")
                 .antMatchers("/favicon.ico")
                 .antMatchers("/pages/**")
-                .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**");
+                .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**")
+                .antMatchers("/parks","/parks/pName","/parks/pArea", "/parks/search");
     }
 }
