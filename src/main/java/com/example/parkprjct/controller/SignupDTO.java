@@ -1,9 +1,10 @@
 package com.example.parkprjct.controller;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
 public class SignupDTO {
-    private String name;
-    private String uid;
+    @JsonProperty("uNickname")
+    private String uNickname;
 }
