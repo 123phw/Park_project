@@ -13,5 +13,22 @@ public class ReviewRepositoryImpl extends QuerydslRepositorySupport implements R
 
     public ReviewRepositoryImpl(){ super(Review.class); }
 
+  //  public Page<ReviewDto> reviewList(Long pIdx,Pageable pageable){
+
+
+//        JPQLQuery<ReviewDto> query = queryFactory.selectFrom(ReviewDto)
+//                .where(pIdx.castToNum(Long.class));
+//    }
+//
+//    private BooleanExpression eqPIdx(Long pIdx){
+//        if(pIdx == null){
+//            return null;
+//        }
+//        return QReview.review.pIdx.eq(pIdx);
+//    }
+
+
+
+
 
 }

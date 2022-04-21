@@ -22,7 +22,9 @@ public class ReviewRepositoryTest {
 
     @Test
     public void save() throws Exception{
-        Review review = new Review("리뷰내용", 3,12);
+        long pid = 1L;
+        long uid = 1L;
+        Review review = new Review("리뷰내용", 3,0);
         reviewRepository.save(review);
     }
 }

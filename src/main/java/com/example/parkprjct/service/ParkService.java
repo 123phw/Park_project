@@ -33,7 +33,7 @@ public class ParkService {
         return parkRepository.park(pageable);
     }
 
-//    public List<ParkDto> getParkAll(Sort sort){
+    //    public List<ParkDto> getParkAll(Sort sort){
 //        List<Park> parkList = parkRepository.findAll(sort);
 //        return parkList.stream().map(ParkDto::new).collect(Collectors.toList());
 //    }

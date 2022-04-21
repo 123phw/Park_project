@@ -92,13 +92,13 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
     @Override
     public Page<ParkDto> findByAllOptions(Pageable pageable, String pName, String pArea){
         JPQLQuery<ParkDto> query =  queryFactory.select(Projections.fields(ParkDto.class,
-                QPark.park.pIdx,
-                QPark.park.pName,
-                QPark.park.pImg,
-                QPark.park.pArea,
-                QPark.park.pAvgRate,
-                QPark.park.pX,
-                QPark.park.pY))
+                        QPark.park.pIdx,
+                        QPark.park.pName,
+                        QPark.park.pImg,
+                        QPark.park.pArea,
+                        QPark.park.pAvgRate,
+                        QPark.park.pX,
+                        QPark.park.pY))
                 .from(QPark.park)
                 .where(containName(pName), eqArea(pArea));
 
