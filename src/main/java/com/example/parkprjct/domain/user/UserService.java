@@ -49,7 +49,8 @@ public class UserService implements UserDetailsService{
                 throw new CustomException(ErrorCode.EXIST_MEMBER);
             }
             
-            Users user = Users.builder().gId(firebaseToken.getUid()).uNickname(signupDTO.getUNickname()).build();
+
+    Users user = Users.builder().gId(firebaseToken.getUid()).uNickname(signupDTO.getUNickname()).build();
             userRepository.save(user);
             return user;
         } catch (FirebaseAuthException e) {
