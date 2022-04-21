@@ -4,20 +4,25 @@ import com.example.parkprjct.controller.SignupDTO;
 import com.example.parkprjct.entity.Users;
 import com.example.parkprjct.exception.CustomException;
 import com.example.parkprjct.exception.ErrorCode;
+//import com.google.cloud.storage.Bucket;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+
+import com.example.parkprjct.entity.Users;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 @Service
-@Slf4j
 @AllArgsConstructor
+@Slf4j
 public class UserService implements UserDetailsService{
     private final UserRepository userRepository;
     private final FirebaseAuth firebaseAuth;
@@ -31,7 +36,7 @@ public class UserService implements UserDetailsService{
 
     @Transactional
     public Users signupMock(SignupDTO signupDTO, String token) {
-        Users user = Users.builder().gId(token).uNickname(signupDTO.getName()).build();
+        Users user = Users.builder().gId(token).uNickname(signupDTO.getUNickname()).build();
         userRepository.save(user);
         return user;
     }
@@ -44,7 +49,7 @@ public class UserService implements UserDetailsService{
                 throw new CustomException(ErrorCode.EXIST_MEMBER);
             }
             
-            Users user = Users.builder().gId(firebaseToken.getUid()).uNickname(signupDTO.getName()).build();
+            Users user = Users.builder().gId(firebaseToken.getUid()).uNickname(signupDTO.getUNickname()).build();
             userRepository.save(user);
             return user;
         } catch (FirebaseAuthException e) {

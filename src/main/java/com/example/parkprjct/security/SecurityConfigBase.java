@@ -35,6 +35,7 @@ public class SecurityConfigBase extends WebSecurityConfigurerAdapter{
     public void configure(WebSecurity web) throws Exception {
         //인증 예외 URL 설정
         web.ignoring()
+                .antMatchers("/logo192.png")
                 .antMatchers(HttpMethod.GET ,"/manifest.json")
                 .antMatchers(HttpMethod.GET ,"/")
                 .antMatchers(HttpMethod.POST, "/users")
@@ -47,6 +48,6 @@ public class SecurityConfigBase extends WebSecurityConfigurerAdapter{
                 .antMatchers("/favicon.ico")
                 .antMatchers("/pages/**")
                 .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**")
-                .antMatchers("/parks","/parks/pName","/parks/pArea", "/parks/search");
+                .antMatchers(HttpMethod.GET, "/parks","/parks/pName","/parks/pArea", "/parks/search");
     }
 }
