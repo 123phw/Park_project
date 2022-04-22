@@ -40,6 +40,9 @@ public class Park {
     @Column(name = "p_desc", length = 1000)
     private String pDesc;
 
+    @Column(name = "p_like_cnt", nullable = false)
+    private int pLikeCnt;
+
     @Column(name = "p_avg_rate", columnDefinition = "decimal(10,1) default '0.0'")
     private BigDecimal pAvgRate;
 
@@ -52,7 +55,7 @@ public class Park {
     @OneToMany(mappedBy = "pIdx")
     private List<Review> reviews;
 
-    public Park(String pName, String pAddr, String pArea, String pImg, String pSite, String pDesc, BigDecimal pAvgRate, BigDecimal pX, BigDecimal pY) {
+    public Park(String pName, String pAddr, String pArea, String pImg, String pSite, String pDesc, int pLikeCnt, BigDecimal pAvgRate, BigDecimal pX, BigDecimal pY) {
         this.pName = pName;
         this.pAddr = pAddr;
         this.pArea = pArea;
@@ -62,6 +65,7 @@ public class Park {
         this.pAvgRate = pAvgRate;
         this.pX = pX;
         this.pY = pY;
+        this.pLikeCnt = pLikeCnt;
 
     }
 

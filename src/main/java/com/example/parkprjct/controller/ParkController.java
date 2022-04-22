@@ -65,7 +65,4 @@ public class ParkController {
     //공원 상세보기 - http://localhost:9090/parks/3
 
 
-
-
-
 }

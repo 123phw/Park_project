@@ -1,6 +1,5 @@
 package com.example.parkprjct.repository;
 
-import com.example.parkprjct.entity.Review;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class ReviewRepositoryTest {
     public void save() throws Exception{
         long pid = 1L;
         long uid = 1L;
-        Review review = new Review("리뷰내용", 3,0);
-        reviewRepository.save(review);
+//        Review review = new Review("리뷰내용", 3,0);
+//        reviewRepository.save(review);
     }
 }
