@@ -37,6 +37,7 @@ public class ParkController {
 
     }//공원목록 - http://localhost:9090/parks?page=1&size=6
     //공원목록(별점순) - http://localhost:9090/parks?page=0&size=6&sort=pAvgRate,desc
+    //공원목록(Best) - https://parkproj.herokuapp.com/parks?page=0&size=6&sort=pLikeCnt,desc
 
     @GetMapping("/pName")//공원명 검색시 해당 공원이 출력됨
     public Page<ParkDto> searchParkName(Pageable pageable,

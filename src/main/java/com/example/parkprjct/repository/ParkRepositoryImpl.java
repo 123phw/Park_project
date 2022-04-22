@@ -1,7 +1,8 @@
 package com.example.parkprjct.repository;
 
 import com.example.parkprjct.dto.ParkDto;
-import com.example.parkprjct.entity.*;
+import com.example.parkprjct.entity.Park;
+import com.example.parkprjct.entity.QPark;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.JPQLQuery;
@@ -11,11 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
-import org.springframework.security.core.parameters.P;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
-import java.util.Optional;
 
 public class ParkRepositoryImpl extends QuerydslRepositorySupport implements ParkReposiitoryCustom {
 
@@ -44,6 +42,7 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
                 QPark.park.pName,
                 QPark.park.pImg,
                 QPark.park.pArea,
+                QPark.park.pLikeCnt,
                 QPark.park.pAvgRate,
                 QPark.park.pX,
                 QPark.park.pY)).from(QPark.park);
