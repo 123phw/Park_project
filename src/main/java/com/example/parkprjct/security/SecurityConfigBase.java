@@ -48,6 +48,6 @@ public class SecurityConfigBase extends WebSecurityConfigurerAdapter{
                 .antMatchers("/favicon.ico")
                 .antMatchers("/pages/**")
                 .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**")
-                .antMatchers(HttpMethod.GET,"/parks","/parks/pName","/parks/pArea", "/parks/search");
+                .antMatchers(HttpMethod.GET,"/parks","/parks/pName","/parks/pArea", "/parks/search", "/parks/{parkIdx}");
     }
 }
