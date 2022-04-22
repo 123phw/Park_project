@@ -47,11 +47,9 @@ public class Review {
     @OneToMany(mappedBy = "rIdx")
     private List<Good> goods;
 
-    public Review(String rDesc, int rLikeCnt, Park pIdx, Users uIdx) {
+    public Review(String rDesc, int rLikeCnt) {
         this.rDesc = rDesc;
         this.rLikeCnt = rLikeCnt;
-        this.uIdx = uIdx;
-        this.pIdx = pIdx;
 
     }
 
