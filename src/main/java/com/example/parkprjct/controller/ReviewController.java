@@ -2,8 +2,10 @@ package com.example.parkprjct.controller;
 
 import com.example.parkprjct.dto.ReviewDto;
 import com.example.parkprjct.dto.ReviewSaveRequestDto;
+import com.example.parkprjct.entity.Users;
 import com.example.parkprjct.service.ReviewService;
-import com.google.api.Authentication;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/parks/{parkIdx}/reviews")
+@Slf4j
 public class ReviewController {
 
     @Autowired
@@ -23,11 +26,13 @@ public class ReviewController {
     }
 
     @PostMapping("")//param?
-    public void postReview(@RequestBody ReviewSaveRequestDto reviewSaveRequestDto,
+    public void postReview(@PathVariable("parkIdx") Long pIdx,
+                           @RequestBody ReviewSaveRequestDto reviewSaveRequestDto,
                            Authentication authentication){
 
-        //uIdx와 pIdx어떻게 받아올지
-        //reviewService.postReview();
+        Users users = (Users) authentication.getPrincipal();
+
+        reviewService.postReview(users, pIdx, reviewSaveRequestDto);
     }
 
     @DeleteMapping("/{reviewIdx}")//리뷰idx로 해당 리뷰 삭제하기
