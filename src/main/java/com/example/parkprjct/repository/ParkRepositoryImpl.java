@@ -42,6 +42,7 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
                 QPark.park.pName,
                 QPark.park.pImg,
                 QPark.park.pArea,
+                QPark.park.pLikeCnt,
                 QPark.park.pAvgRate,
                 QPark.park.pX,
                 QPark.park.pY)).from(QPark.park);
