@@ -19,7 +19,7 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
-    @GetMapping("reviews")//pIdx에 해당하는 리뷰 조회
+    @GetMapping("")//pIdx에 해당하는 리뷰 조회
     public Page<ReviewDto> getReview(@PathVariable(value = "parkIdx") Long pIdx,
                                      Pageable pageable){
         return reviewService.getReview(pIdx, pageable);
