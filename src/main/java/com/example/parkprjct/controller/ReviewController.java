@@ -25,7 +25,7 @@ public class ReviewController {
         return reviewService.getReview(pIdx, pageable);
     }
 
-    @PostMapping("")//param?
+    @PostMapping("")
     public void postReview(@PathVariable("parkIdx") Long pIdx,
                            @RequestBody ReviewSaveRequestDto reviewSaveRequestDto,
                            Authentication authentication){
