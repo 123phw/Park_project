@@ -23,7 +23,7 @@ public class ReviewController {
     public Page<ReviewDto> getReview(@PathVariable(value = "parkIdx") Long pIdx,
                                      Pageable pageable){
         return reviewService.getReview(pIdx, pageable);
-    }//리뷰조회 - https://parkproj.herokuapp.com/parks/3/reviews
+    }//리뷰조회 - https://parkproj.herokuapp.com/parks/3(공원idx)/reviews
 
     @PostMapping("")//pIdx값에 해당하는 공원리뷰 등록
     public void postReview(@PathVariable("parkIdx") Long pIdx,
@@ -32,7 +32,7 @@ public class ReviewController {
 
         Users users = (Users) authentication.getPrincipal();
         reviewService.postReview(users, pIdx, reviewSaveRequestDto);
-    }//리뷰등록 - https://parkproj.herokuapp.com/parks/3/reviews
+    }//리뷰등록 - https://parkproj.herokuapp.com/parks/3(공원idx)/reviews
 
     @PatchMapping("/{reviewId}")//ridx로 해당하는 사용자의 리뷰 수정
     public void updateReview(@PathVariable("parkIdx") Long pIdx,
