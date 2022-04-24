@@ -5,6 +5,7 @@ import com.example.parkprjct.dto.ReviewSaveRequestDto;
 import com.example.parkprjct.dto.ReviewSaveResponseDto;
 import com.example.parkprjct.entity.Review;
 import com.example.parkprjct.entity.Users;
+import com.example.parkprjct.exception.ForbiddenException;
 import com.example.parkprjct.repository.ParkRepository;
 import com.example.parkprjct.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,22 +51,28 @@ public class ReviewService {
                 .orElseThrow(()-> {
                     throw new UsernameNotFoundException("해당하는 리뷰가 없습니다.");
                 });
-        //예외처리
+
+        userMatchCheck(user, review);
+        //사용자 일치 예외처리
 
         review.updateReview(updateReviewDto);
         //리뷰수정
-
     }
 
-    public void deleteReview(Long pIdx, Long rIdx){
+    public void deleteReview(Users user, Long pIdx, Long rIdx){
 
         parkNotFoundException(pIdx);
         rivewNotFoundException(rIdx);
 
+        Review review = reviewRepository.findById(rIdx)
+                .orElseThrow(()-> {
+                    throw new UsernameNotFoundException("해당하는 리뷰가 없습니다.");
+                });
+
+        userMatchCheck(user, review);
+
         reviewRepository.deleteById(rIdx);
     }
-
-
 
     private void parkNotFoundException(Long pIdx){
         parkRepository.findById(pIdx)
@@ -79,6 +86,12 @@ public class ReviewService {
                 .orElseThrow(()->{
                     throw  new UsernameNotFoundException("해당하는 리뷰가 없습니다.");
                 });
+    }
+
+    private void userMatchCheck(Users user, Review review){
+        if(!user.getUIdx().equals(review.getUIdx().getUIdx())){
+            throw new ForbiddenException("사용자가 일치하지않습니다");
+        }
     }
 
 }
