@@ -42,7 +42,26 @@ public class ReviewService {
         return new ReviewSaveResponseDto(review);
     }
 
-    public void deleteReview(Long rIdx){
+    public void updateReview(Users user, Long pIdx, Long rIdx, ReviewSaveRequestDto updateReviewDto){
+
+        parkNotFoundException(pIdx);
+
+        Review review = reviewRepository.findById(rIdx)
+                .orElseThrow(()-> {
+                    throw new UsernameNotFoundException("해당하는 리뷰가 없습니다.");
+                });
+        //예외처리
+
+        review.updateReview(updateReviewDto);
+        //리뷰수정
+
+    }
+
+    public void deleteReview(Long pIdx, Long rIdx){
+
+        parkNotFoundException(pIdx);
+        rivewNotFoundException(rIdx);
+
         reviewRepository.deleteById(rIdx);
     }
 
@@ -52,6 +71,13 @@ public class ReviewService {
         parkRepository.findById(pIdx)
                 .orElseThrow(()-> {
                     throw new UsernameNotFoundException("해당하는 공원이 없습니다.");
+                });
+    }
+
+    private void rivewNotFoundException(Long rIdx){
+        reviewRepository.findById(rIdx)
+                .orElseThrow(()->{
+                    throw  new UsernameNotFoundException("해당하는 리뷰가 없습니다.");
                 });
     }
 

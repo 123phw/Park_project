@@ -1,5 +1,6 @@
 package com.example.parkprjct.entity;
 
+import com.example.parkprjct.dto.ReviewSaveRequestDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -52,7 +53,12 @@ public class Review {
         this.rRate = rRate;
         this.uIdx = uIdx;
         this.pIdx = pIdx;
-
     }
+
+    public void updateReview(ReviewSaveRequestDto reviewSaveRequestDto){
+        this.rRate = reviewSaveRequestDto.getRRate();
+        this.rDesc = reviewSaveRequestDto.getRDesc();
+    }
+
 
 }

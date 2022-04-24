@@ -35,8 +35,19 @@ public class ReviewController {
         reviewService.postReview(users, pIdx, reviewSaveRequestDto);
     }
 
+    @PatchMapping("/{reviewIdx}")
+    public void updateReview(@PathVariable("parkIdx") Long pIdx,
+                             @PathVariable("reviewIdx") Long rIdx,
+                             ReviewSaveRequestDto updateReviewDto,
+                             Authentication authentication){
+
+        Users user = (Users) authentication.getPrincipal();
+        reviewService.updateReview(user, pIdx, rIdx, updateReviewDto);
+    }
+
     @DeleteMapping("/{reviewIdx}")//리뷰idx로 해당 리뷰 삭제하기
-    public void deleteReview(@PathVariable("reviewIdx") Long rIdx){
-        reviewService.deleteReview(rIdx);
+    public void deleteReview(@PathVariable("parkIdx") Long pIdx,
+                             @PathVariable("reviewIdx") Long rIdx){
+        reviewService.deleteReview(pIdx, rIdx);
     }
 }
