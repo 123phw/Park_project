@@ -1,4 +1,4 @@
-/*package com.example.parkprjct.security;
+package com.example.parkprjct.security;
 
 import com.example.parkprjct.domain.user.UserService;
 import com.example.parkprjct.security.filter.TestTokenFilter;
@@ -17,4 +17,4 @@ public class TestSecurityConfig extends SecurityConfigBase {
     public TestSecurityConfig(UserService userService) {
         super(new TestTokenFilter(userService));
     }
-}*/
+}
