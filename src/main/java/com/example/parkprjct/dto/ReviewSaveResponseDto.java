@@ -1,17 +1,19 @@
 package com.example.parkprjct.dto;
 
 import com.example.parkprjct.entity.Review;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class ReviewSaveResponseDto {
 
     private int rRate;
     private String rDesc;
-    Long pIdx;
-    Long uIdx;
+    private Long pIdx;
+    private Long uIdx;
 
     public ReviewSaveResponseDto(Review review){
         this.rDesc = review.getRDesc();

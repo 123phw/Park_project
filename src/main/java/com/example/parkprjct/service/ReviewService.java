@@ -22,11 +22,14 @@ public class ReviewService {
     @Autowired
     private ParkRepository parkRepository;
 
+
     public Page<ReviewDto> getReview(Long pIdx, Pageable pageable){
 
         return reviewRepository.reviewList(pIdx, pageable)
                 .map(review -> new ReviewDto(review));
     }
+
+
     public ReviewSaveResponseDto postReview(Users users, Long pIdx, ReviewSaveRequestDto reviewSaveDto){
 
         parkNotFoundException(pIdx);
@@ -63,7 +66,7 @@ public class ReviewService {
     public void deleteReview(Users user, Long pIdx, Long rIdx){
 
         parkNotFoundException(pIdx);
-        rivewNotFoundException(rIdx);
+        riviewNotFoundException(rIdx);
 
         Review review = reviewRepository.findById(rIdx)
                 .orElseThrow(()-> {
@@ -82,7 +85,7 @@ public class ReviewService {
                 });
     }
 
-    private void rivewNotFoundException(Long rIdx){
+    private void riviewNotFoundException(Long rIdx){
         reviewRepository.findById(rIdx)
                 .orElseThrow(()->{
                     throw  new UsernameNotFoundException("해당하는 리뷰가 없습니다.");
