@@ -22,6 +22,7 @@ public class ReviewService {
     @Autowired
     private ParkRepository parkRepository;
 
+
     public Page<ReviewDto> getReview(Long pIdx, Pageable pageable){
 
         return reviewRepository.reviewList(pIdx, pageable)
