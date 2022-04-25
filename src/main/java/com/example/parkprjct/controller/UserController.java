@@ -27,7 +27,6 @@ public class UserController {
         log.info("activeProfile: {}", activeProfile);
     }
 
-
     @GetMapping("/me")
     public Users login(Authentication authentication) {
         return (Users) authentication.getPrincipal();

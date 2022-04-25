@@ -34,10 +34,10 @@ public class Review {
     @Column(name = "r_desc", length = 1000)
     private String rDesc;
 
-    @Column(name = "r_rate", nullable = false, columnDefinition = "int default '0'")
+    @Column(name = "r_rate", nullable = false)
     private int rRate;
 
-    @Column(name = "r_like_cnt", nullable = false)
+    @Column(name = "r_like_cnt", columnDefinition = "int default '0'")
     private int rLikeCnt;
 
     @Column(name = "r_date")

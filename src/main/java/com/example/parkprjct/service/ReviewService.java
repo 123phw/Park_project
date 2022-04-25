@@ -19,6 +19,7 @@ public class ReviewService {
 
     @Autowired
     private ReviewRepository reviewRepository;
+    @Autowired
     private ParkRepository parkRepository;
 
     public Page<ReviewDto> getReview(Long pIdx, Pageable pageable){
