@@ -1,6 +1,7 @@
 package com.example.parkprjct.repository;
 
 import com.example.parkprjct.entity.Like;
+import com.example.parkprjct.entity.Park;
 import com.example.parkprjct.entity.Users;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +13,6 @@ import java.util.Optional;
 
 public interface LikeRepository extends JpaRepository<Like, Long> {
 
-    List<Like> findByuIdx(Users user);
+    Page<Park> findByuIdx(Users user);
 
 }

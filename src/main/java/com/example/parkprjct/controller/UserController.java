@@ -4,6 +4,7 @@ import com.example.parkprjct.domain.user.UserService;
 import com.example.parkprjct.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -47,8 +48,8 @@ public class UserController {
     }
 
     @GetMapping("/me/parks")
-    public Users likedPost(Authentication authentication) {
-        return userService.likedPost(authentication);
+    public Users likedPost(Pageable pageable, Authentication authentication) {
+        return userService.likedPost(pageable, authentication);
     }
 
     @GetMapping("/me/reviews")
