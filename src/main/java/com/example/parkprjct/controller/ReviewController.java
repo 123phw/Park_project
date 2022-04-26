@@ -37,7 +37,7 @@ public class ReviewController {
     @PatchMapping("/{reviewId}")//ridx로 해당하는 사용자의 리뷰 수정
     public void updateReview(@PathVariable("parkIdx") Long pIdx,
                              @PathVariable("reviewId") Long rIdx,
-                             ReviewSaveRequestDto updateReviewDto,
+                             @RequestBody ReviewSaveRequestDto updateReviewDto,
                              Authentication authentication){
 
         Users user = (Users) authentication.getPrincipal();

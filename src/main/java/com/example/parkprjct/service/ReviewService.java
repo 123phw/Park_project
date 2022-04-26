@@ -4,6 +4,7 @@ import com.example.parkprjct.dto.ReviewDto;
 import com.example.parkprjct.dto.ReviewSaveRequestDto;
 import com.example.parkprjct.dto.ReviewSaveResponseDto;
 import com.example.parkprjct.dto.ReviewUpdateResponseDto;
+import com.example.parkprjct.entity.Park;
 import com.example.parkprjct.entity.Review;
 import com.example.parkprjct.entity.Users;
 import com.example.parkprjct.exception.ForbiddenException;
@@ -36,7 +37,7 @@ public class ReviewService {
     @Transactional
     public ReviewSaveResponseDto postReview(Users users, Long pIdx, ReviewSaveRequestDto reviewSaveDto){
 
-        parkNotFoundException(pIdx);
+        Park park = parkNotFoundException(pIdx);
         //pIdx미발견시 예외
 
         Review review = new Review(
@@ -48,13 +49,15 @@ public class ReviewService {
         reviewRepository.save(review);
         //리뷰생성
 
+
         return new ReviewSaveResponseDto(review);
     }
 
     @Transactional
     public ReviewUpdateResponseDto updateReview(Users user, Long pIdx, Long rIdx, ReviewSaveRequestDto updateReviewDto){
 
-        parkNotFoundException(pIdx);
+        Park park = parkNotFoundException(pIdx);
+
         Review review = reviewRepository.findById(rIdx)
                 .orElseThrow(()-> {
                     throw new UsernameNotFoundException("해당하는 리뷰가 없습니다.");
@@ -62,7 +65,7 @@ public class ReviewService {
         userMatchCheck(user, review);
         //사용자 일치 예외처리
 
-        review.updateReview(updateReviewDto.getRRate(), updateReviewDto.getRDesc());
+        review.updateReview(updateReviewDto);
         //리뷰수정
 
         return new ReviewUpdateResponseDto(review);
@@ -84,8 +87,8 @@ public class ReviewService {
         reviewRepository.deleteById(rIdx);
     }
 
-    private void parkNotFoundException(Long pIdx){
-        parkRepository.findById(pIdx)
+    private Park parkNotFoundException(Long pIdx){
+        return parkRepository.findById(pIdx)
                 .orElseThrow(()-> {
                     throw new UsernameNotFoundException("해당하는 공원이 없습니다.");
                 });
