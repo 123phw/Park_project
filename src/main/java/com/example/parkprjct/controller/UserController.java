@@ -46,9 +46,14 @@ public class UserController {
         }
     }
 
-    @GetMapping("/me/park")
+    @GetMapping("/me/parks")
     public Users likedPost(Authentication authentication) {
         return userService.likedPost(authentication);
+    }
+
+    @GetMapping("/me/reviews")
+    public Users postedReview(Authentication authentication) {
+        return userService.postedReview(authentication);
     }
 
 
