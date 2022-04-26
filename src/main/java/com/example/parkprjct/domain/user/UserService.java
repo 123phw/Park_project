@@ -1,16 +1,22 @@
 package com.example.parkprjct.domain.user;
 
 import com.example.parkprjct.controller.SignupDTO;
+import com.example.parkprjct.entity.Like;
 import com.example.parkprjct.entity.Users;
 import com.example.parkprjct.exception.CustomException;
 import com.example.parkprjct.exception.ErrorCode;
 //import com.google.cloud.storage.Bucket;
+import com.example.parkprjct.repository.LikeRepository;
+import com.example.parkprjct.repository.ReviewRepository;
+import com.google.api.gax.paging.Page;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
 
 import com.example.parkprjct.entity.Users;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -58,5 +64,19 @@ public class UserService implements UserDetailsService{
         }
     }
 
+    @Transactional
+    public Users likedPost(Authentication authentication) {
 
+        Users user = (Users) authentication.getPrincipal();
+        return LikeRepository.findByuIdx(user)
+                .map(Like -> Like.getpIdx());
+    }
+
+    @Transactional
+    public Users postedReview(Authentication authentication) {
+        Users user = (Users) authentication.getPrincipal();
+        return ReviewRepository.findByuIdx(user)
+                .map(Review -> Review.getrIdx());
+
+    }
 }
