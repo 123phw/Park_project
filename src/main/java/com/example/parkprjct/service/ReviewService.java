@@ -3,6 +3,7 @@ package com.example.parkprjct.service;
 import com.example.parkprjct.dto.ReviewDto;
 import com.example.parkprjct.dto.ReviewSaveRequestDto;
 import com.example.parkprjct.dto.ReviewSaveResponseDto;
+import com.example.parkprjct.dto.ReviewUpdateResponseDto;
 import com.example.parkprjct.entity.Review;
 import com.example.parkprjct.entity.Users;
 import com.example.parkprjct.exception.ForbiddenException;
@@ -14,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class ReviewService {
 
@@ -22,7 +25,7 @@ public class ReviewService {
     @Autowired
     private ParkRepository parkRepository;
 
-
+    @Transactional
     public Page<ReviewDto> getReview(Long pIdx, Pageable pageable){
 
         return reviewRepository.reviewList(pIdx, pageable)
@@ -30,6 +33,7 @@ public class ReviewService {
     }
 
 
+    @Transactional
     public ReviewSaveResponseDto postReview(Users users, Long pIdx, ReviewSaveRequestDto reviewSaveDto){
 
         parkNotFoundException(pIdx);
@@ -47,22 +51,24 @@ public class ReviewService {
         return new ReviewSaveResponseDto(review);
     }
 
-    public void updateReview(Users user, Long pIdx, Long rIdx, ReviewSaveRequestDto updateReviewDto){
+    @Transactional
+    public ReviewUpdateResponseDto updateReview(Users user, Long pIdx, Long rIdx, ReviewSaveRequestDto updateReviewDto){
 
         parkNotFoundException(pIdx);
-
         Review review = reviewRepository.findById(rIdx)
                 .orElseThrow(()-> {
                     throw new UsernameNotFoundException("해당하는 리뷰가 없습니다.");
                 });
-
         userMatchCheck(user, review);
         //사용자 일치 예외처리
 
-        review.updateReview(updateReviewDto);
+        review.updateReview(updateReviewDto.getRRate(), updateReviewDto.getRDesc());
         //리뷰수정
+
+        return new ReviewUpdateResponseDto(review);
     }
 
+    @Transactional
     public void deleteReview(Users user, Long pIdx, Long rIdx){
 
         parkNotFoundException(pIdx);
