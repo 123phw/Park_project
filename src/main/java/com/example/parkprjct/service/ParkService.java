@@ -3,18 +3,14 @@ package com.example.parkprjct.service;
 import com.example.parkprjct.dto.ParkDto;
 import com.example.parkprjct.entity.Park;
 import com.example.parkprjct.repository.ParkRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 //@RequiredArgsConstructor
 @Service
@@ -60,6 +56,7 @@ public class ParkService {
                     throw new UsernameNotFoundException("해당하는 공원이 없습니다.");
                 });
     }
+
 
 
 

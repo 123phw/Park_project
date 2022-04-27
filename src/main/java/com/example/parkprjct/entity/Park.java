@@ -69,5 +69,10 @@ public class Park {
 
     }
 
+    public void updateAvgRate(double pAvgRate){
+        BigDecimal avg = BigDecimal.valueOf(pAvgRate);
+        this.pAvgRate = avg;
+    }
+
     }
 

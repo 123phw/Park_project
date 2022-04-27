@@ -32,6 +32,7 @@ public class ReviewController {
 
         Users users = (Users) authentication.getPrincipal();
         reviewService.postReview(users, pIdx, reviewSaveRequestDto);
+
     }//리뷰등록 - https://parkproj.herokuapp.com/parks/3(공원idx)/reviews
 
     @PatchMapping("/{reviewId}")//ridx로 해당하는 사용자의 리뷰 수정

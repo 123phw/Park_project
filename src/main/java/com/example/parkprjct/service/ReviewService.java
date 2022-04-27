@@ -29,6 +29,9 @@ public class ReviewService {
     @Transactional
     public Page<ReviewDto> getReview(Long pIdx, Pageable pageable){
 
+        Park park = parkNotFoundException(pIdx);
+        park.updateAvgRate(parkRepository.updateAvgRate(pIdx));
+
         return reviewRepository.reviewList(pIdx, pageable)
                 .map(review -> new ReviewDto(review));
     }
@@ -48,7 +51,8 @@ public class ReviewService {
 
         reviewRepository.save(review);
         //리뷰생성
-
+        park.updateAvgRate(parkRepository.updateAvgRate(pIdx));
+        //공원 평점 업데이트
 
         return new ReviewSaveResponseDto(review);
     }
@@ -67,6 +71,8 @@ public class ReviewService {
 
         review.updateReview(updateReviewDto);
         //리뷰수정
+        park.updateAvgRate(parkRepository.updateAvgRate(pIdx));
+        //공원 평점 업데이트
 
         return new ReviewUpdateResponseDto(review);
     }
@@ -74,7 +80,7 @@ public class ReviewService {
     @Transactional
     public void deleteReview(Users user, Long pIdx, Long rIdx){
 
-        parkNotFoundException(pIdx);
+        Park park = parkNotFoundException(pIdx);
         riviewNotFoundException(rIdx);
 
         Review review = reviewRepository.findById(rIdx)
@@ -85,6 +91,9 @@ public class ReviewService {
         userMatchCheck(user, review);
 
         reviewRepository.deleteById(rIdx);
+        //ridx에 해당하는 리뷰 삭제
+        park.updateAvgRate(parkRepository.updateAvgRate(pIdx));
+        //공원 평점 업데이트
     }
 
     private Park parkNotFoundException(Long pIdx){
@@ -106,5 +115,7 @@ public class ReviewService {
             throw new ForbiddenException("사용자가 일치하지않습니다");
         }
     }
+
+
 
 }
