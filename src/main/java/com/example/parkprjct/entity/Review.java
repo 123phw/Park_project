@@ -1,5 +1,6 @@
 package com.example.parkprjct.entity;
 
+import com.example.parkprjct.dto.ReviewSaveRequestDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,10 +34,10 @@ public class Review {
     @Column(name = "r_desc", length = 1000)
     private String rDesc;
 
-    @Column(name = "r_rate", nullable = false, columnDefinition = "int default '0'")
+    @Column(name = "r_rate", nullable = false)
     private int rRate;
 
-    @Column(name = "r_like_cnt", nullable = false)
+    @Column(name = "r_like_cnt", columnDefinition = "int default '0'")
     private int rLikeCnt;
 
     @Column(name = "r_date")
@@ -54,7 +55,13 @@ public class Review {
         this.rRate = rRate;
         this.uIdx = uIdx;
         this.pIdx = pIdx;
+    }
+
+    public void updateReview(ReviewSaveRequestDto reviewSaveRequestDto){
+        this.rRate = reviewSaveRequestDto.getRRate();
+        this.rDesc = reviewSaveRequestDto.getRDesc();
 
     }
+
 
 }

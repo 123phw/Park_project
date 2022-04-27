@@ -1,14 +1,14 @@
 package com.example.parkprjct.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
-@Getter
-@Setter
 public class ReviewSaveRequestDto {
 
+    @JsonProperty("rRate")
     private int rRate;
+
+    @JsonProperty("rDesc")
     private String rDesc;
 }
