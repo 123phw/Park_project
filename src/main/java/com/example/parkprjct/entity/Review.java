@@ -47,11 +47,6 @@ public class Review {
     @OneToMany(mappedBy = "rIdx")
     private List<Good> goods;
 
-    @Override
-    public String getrIdx() {
-        // TODO Auto-generated method stub
-        return rIdx;
-    }
 
 
     public Review(String rDesc, int rRate, Users uIdx, Park pIdx) {

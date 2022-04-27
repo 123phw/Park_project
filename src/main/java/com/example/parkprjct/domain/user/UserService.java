@@ -34,9 +34,9 @@ import java.util.List;
 public class UserService implements UserDetailsService{
     private final UserRepository userRepository;
     private final FirebaseAuth firebaseAuth;
-    @Autowired
-    LikeRepository LikeRepository;
-    ReviewRepository ReviewRepository;
+
+    private final LikeRepository likeRepository;
+    private final ReviewRepository reviewRepository;
     //private final Bucket bucket;
 
     @Override
@@ -70,18 +70,16 @@ public class UserService implements UserDetailsService{
     }
 
     @Transactional
-    public Page<Park> likedPost(Pageable pageable, Authentication authentication) {
-
+    public Page<Park> likedPost(Authentication authentication, Pageable pageable) {
         Users user = (Users) authentication.getPrincipal();
-        return LikeRepository.findByuIdx(user)
-                .map(Like -> Like.getpIdx());
+        return likeRepository.findByuIdx(user, pageable)
+                .map(like -> like.getPIdx());
     }
 
     @Transactional
-    public List<Review> postedReview(Authentication authentication) {
+    public Page<Review> postedReview(Authentication authentication, Pageable pageable) {
         Users user = (Users) authentication.getPrincipal();
-        return ReviewRepository.findByuIdx(user)
-                .map(Review -> Review.getrIdx());
+        return reviewRepository.findByuIdx(user, pageable);
 
     }
 }

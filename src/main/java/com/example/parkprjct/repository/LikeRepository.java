@@ -13,6 +13,6 @@ import java.util.Optional;
 
 public interface LikeRepository extends JpaRepository<Like, Long> {
 
-    Page<Park> findByuIdx(Users user);
+    Page<Like> findByuIdx(Users user, Pageable pageable);
 
 }

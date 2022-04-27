@@ -1,7 +1,6 @@
 package com.example.parkprjct.entity;
 
 
-import com.example.parkprjct.dto.UserParkDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,10 +27,6 @@ public class Like {//공원좋아요(하트)
     @OneToOne
     private Park pIdx;
 
-    @Override
-    public String getpIdx() {
-        // TODO Auto-generated method stub
-        return pIdx;
-    }
+
 
 }

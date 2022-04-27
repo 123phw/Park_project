@@ -1,4 +1,4 @@
-/*package com.example.parkprjct.security;
+package com.example.parkprjct.security;
 
 
 import com.example.parkprjct.domain.user.UserService;
@@ -18,5 +18,3 @@ public class ProdSecurityConfig extends SecurityConfigBase {
         super(new FirebaseTokenFilter(userService, firebaseAuth));
     }
 }
-
- */
