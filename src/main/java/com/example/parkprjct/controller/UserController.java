@@ -1,9 +1,13 @@
 package com.example.parkprjct.controller;
 
 import com.example.parkprjct.domain.user.UserService;
+import com.example.parkprjct.entity.Park;
+import com.example.parkprjct.entity.Review;
 import com.example.parkprjct.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,6 +47,16 @@ public class UserController {
             log.info("signDto :" + signupDTO);
             return userService.signup(signupDTO, token);
         }
+    }
+
+    @GetMapping("/me/parks")
+    public Page<Park> likedPost(Authentication authentication, Pageable pageable) {
+        return userService.likedPost(authentication, pageable);
+    }
+
+    @GetMapping("/me/reviews")
+    public Page<Review> postedReview(Authentication authentication, Pageable pageable) {
+        return userService.postedReview(authentication, pageable);
     }
 
 

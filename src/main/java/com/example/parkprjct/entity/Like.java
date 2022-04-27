@@ -27,4 +27,6 @@ public class Like {//공원좋아요(하트)
     @OneToOne
     private Park pIdx;
 
+
+
 }
