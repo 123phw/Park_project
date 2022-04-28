@@ -27,10 +27,9 @@ public class LikeService {
         Optional<Like> like = likeRepository.findLikedUser(pIdx, user.getUIdx());
         //좋아요한 uidx와 pidx가 일치하는 값을 like데이터에서 불러옴
 
-        userMatchCheck(user, like.get());//사용자와 uidx가 일치하는지 확인
-
         if(like.isPresent()){//이미 like를 누른경우
             deleteLike(like.get().getLIdx(),pIdx);//like 튜플 삭제
+            userMatchCheck(user, like.get());//사용자와 uidx가 일치하는지 확인
         }
         else{//like를 누르지 않은 경우
             postLike(user, pIdx);

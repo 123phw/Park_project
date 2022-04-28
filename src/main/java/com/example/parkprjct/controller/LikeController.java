@@ -7,20 +7,20 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/parks/{parksIdx}")
+@RequestMapping("/parks/{parkIdx}/likes")
 public class LikeController {
 
     @Autowired
     private LikeService likeService;
 
-    @PostMapping("/likes")
+    @PostMapping("")
     public void postLike(@PathVariable("parkIdx")Long pIdx,
                          Authentication authentication){
         Users user = (Users) authentication.getPrincipal();
         likeService.checkLike(user, pIdx);
     }
 
-    @DeleteMapping("/likes")
+    @DeleteMapping("")
     public void deleteLike(@PathVariable("parkIdx")Long pIdx,
                            Authentication authentication){
 
