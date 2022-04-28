@@ -3,6 +3,7 @@ package com.example.parkprjct.repository;
 import com.example.parkprjct.dto.ParkDto;
 import com.example.parkprjct.entity.Park;
 import com.example.parkprjct.entity.QPark;
+import com.example.parkprjct.entity.QReview;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.JPQLQuery;
@@ -19,7 +20,8 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
 
     @Autowired
     private JPAQueryFactory queryFactory;
-    private ParkRepository parkRepository;
+//    @Autowired
+//    private ParkRepository parkRepository;
 
     public ParkRepositoryImpl(){
         super(Park.class);
@@ -36,6 +38,7 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
     //공원목록(내림차순, 거리순 필터)
     @Override
     public Page<ParkDto> parkList(Pageable pageable){
+
 
         JPQLQuery<ParkDto> sortquery = queryFactory.select(Projections.fields(ParkDto.class,
                 QPark.park.pIdx,
@@ -101,10 +104,32 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
                 .from(QPark.park)
                 .where(containName(pName), eqArea(pArea));
 
+
         List<ParkDto> parks = this.getQuerydsl().applyPagination(pageable, query).fetch();
         return new PageImpl<ParkDto>(parks, pageable, query.fetchCount());
     }
 
+    @Override
+    public Double updateAvgRate(Long pIdx){
+        Double result = queryFactory.select(QReview.review.rRate.avg())
+                .from(QReview.review)
+                .where(eqPIdx(pIdx))
+                .fetchOne();
+
+        if(result == null){
+            result = 0.0;
+        }
+
+        return result;
+    }
+
+
+    private BooleanExpression eqPIdx(Long pIdx){
+        if(pIdx==null){
+            return null;
+        }
+        return QReview.review.pIdx.pIdx.eq(pIdx);
+    }
 
     private BooleanExpression eqArea(String pArea){
         if(pArea == null || pArea.isEmpty()){

@@ -17,6 +17,7 @@ public class ReviewDto {
     private Long uIdx;
     private String uNickname;
     private String gImg;
+    private int rRate;
     private int rLikeCnt;
     private String rDesc;
     private Timestamp rDate;
@@ -26,6 +27,7 @@ public class ReviewDto {
         this.uIdx = review.getUIdx().getUIdx();
         this.uNickname = review.getUIdx().getUNickname();
         this.gImg = review.getUIdx().getGImg();
+        this.rRate = review.getRRate();
         this.rLikeCnt = review.getRLikeCnt();
         this.rDesc = review.getRDesc();
         this.rDate = review.getRDate();

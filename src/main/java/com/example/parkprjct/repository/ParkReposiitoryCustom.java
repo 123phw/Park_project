@@ -5,7 +5,6 @@ import com.example.parkprjct.entity.Park;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.Optional;
 //queryDSL구현 기능
 public interface ParkReposiitoryCustom {
 
@@ -23,4 +22,6 @@ public interface ParkReposiitoryCustom {
 
     Page<ParkDto> findByAllOptions(Pageable pageable, String pName, String pArea);
     //공원명 + 지역구 검색
+
+    Double updateAvgRate(Long pIdx);
 }
