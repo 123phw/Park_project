@@ -3,12 +3,10 @@ package com.example.parkprjct.dto;
 
 import com.example.parkprjct.entity.Review;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
-@Getter
 @NoArgsConstructor
 @Data
 public class ReviewDto {

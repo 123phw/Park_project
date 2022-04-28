@@ -1,6 +1,5 @@
 package com.example.parkprjct.repository;
 
-import com.example.parkprjct.entity.Like;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,11 @@ public class LikeRepositoryTest {
 
     @Test
     public void save() throws Exception{
-        Like like = new Like();
-        likeRepository.save(like);
+//        Like like = new Like();
+//        likeRepository.save(like);
+
+//        Long lIdx = 4L;
+//        likeRepository.deleteById(lIdx);
     }
 
 }

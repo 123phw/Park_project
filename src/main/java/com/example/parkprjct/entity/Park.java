@@ -73,6 +73,10 @@ public class Park {
         BigDecimal avg = BigDecimal.valueOf(pAvgRate);
         this.pAvgRate = avg;
     }
+    public void like(){
+        this.pLikeCnt+=1;
+    }
 
+    public void cancelLike() { this.pLikeCnt-=1; }
     }
 

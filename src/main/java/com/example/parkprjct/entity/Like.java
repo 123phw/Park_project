@@ -28,5 +28,8 @@ public class Like {//공원좋아요(하트)
     private Park pIdx;
 
 
-
+    public Like(Users uIdx, Park pIdx){
+        this.uIdx = uIdx;
+        this.pIdx = pIdx;
+    }
 }

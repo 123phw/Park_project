@@ -1,13 +1,11 @@
 package com.example.parkprjct.dto;
 
 import com.example.parkprjct.entity.Review;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class ReviewSaveResponseDto {
 
     private int rRate;

@@ -20,8 +20,7 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
 
     @Autowired
     private JPAQueryFactory queryFactory;
-//    @Autowired
-//    private ParkRepository parkRepository;
+
 
     public ParkRepositoryImpl(){
         super(Park.class);

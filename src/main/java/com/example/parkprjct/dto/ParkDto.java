@@ -2,12 +2,10 @@ package com.example.parkprjct.dto;
 
 import com.example.parkprjct.entity.Park;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-@Getter
 @NoArgsConstructor
 @Data
 public class ParkDto {
