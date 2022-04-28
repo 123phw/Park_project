@@ -26,5 +26,5 @@ public class LikeController {
 
         Users user = (Users) authentication.getPrincipal();
         likeService.checkLike(user, pIdx);
-    }
+    }//공원 좋아요 및 취소 - parks/2/likes
 }

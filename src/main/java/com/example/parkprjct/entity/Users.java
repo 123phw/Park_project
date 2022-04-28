@@ -1,10 +1,6 @@
 package com.example.parkprjct.entity;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +26,7 @@ public class Users implements UserDetails{
     @Column(name = "u_idx", nullable = false)
     private Long uIdx;
 
-    @Column(name = "g_id", nullable = false)
+    @Column(name = "g_id", nullable = false, unique = true)
     private String gId;
 
     @Column(name = "g_img")
