@@ -6,5 +6,6 @@ import java.util.Optional;
 
 public interface LikeRepositoryCustom {
 
+
     Optional<Like> findLikedUser(Long pIdx, Long uIdx);
 }

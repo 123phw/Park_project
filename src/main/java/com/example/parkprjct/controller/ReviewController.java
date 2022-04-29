@@ -35,9 +35,9 @@ public class ReviewController {
 
     }//리뷰등록 - https://parkproj.herokuapp.com/parks/3(공원idx)/reviews
 
-    @PatchMapping("/{reviewId}")//ridx로 해당하는 사용자의 리뷰 수정
+    @PatchMapping("/{reviewIdx}")//ridx로 해당하는 사용자의 리뷰 수정
     public void updateReview(@PathVariable("parkIdx") Long pIdx,
-                             @PathVariable("reviewId") Long rIdx,
+                             @PathVariable("reviewIdx") Long rIdx,
                              @RequestBody ReviewSaveRequestDto updateReviewDto,
                              Authentication authentication){
 
@@ -45,9 +45,9 @@ public class ReviewController {
         reviewService.updateReview(user, pIdx, rIdx, updateReviewDto);
     }//리뷰수정 - https://parkproj.herokuapp.com/parks/3(공원idx)/reviews/4(리뷰idx)
 
-    @DeleteMapping("/{reviewId}")//ridx로 해당 리뷰 삭제하기
+    @DeleteMapping("/{reviewIdx}")//ridx로 해당 리뷰 삭제하기
     public void deleteReview(@PathVariable("parkIdx") Long pIdx,
-                             @PathVariable("reviewId") Long rIdx,
+                             @PathVariable("reviewIdx") Long rIdx,
                              Authentication authentication){
 
         Users user = (Users) authentication.getPrincipal();

@@ -25,10 +25,10 @@ public class LikeService {
     public void checkLike(Users user, Long pIdx){
 
         Optional<Like> like = likeRepository.findLikedUser(pIdx, user.getUIdx());
-        //좋아요한 uidx와 pidx가 일치하는 값을 like데이터에서 불러옴
+        //좋아요 한적이 있으면 idx가 일치하는 like테이블의 데이터를 불러옴
 
         if(like.isPresent()){//이미 like를 누른경우
-            deleteLike(like.get().getLIdx(),pIdx);//like 튜플 삭제
+            deleteLike(like.get().getLIdx(), pIdx);//like취소
             userMatchCheck(user, like.get());//사용자와 uidx가 일치하는지 확인
         }
         else{//like를 누르지 않은 경우
@@ -40,7 +40,7 @@ public class LikeService {
         Park park = parkNotFoundException(pIdx);
 
         Like like = new Like(user, park);
-        likeRepository.save(like);//like튜플추가
+        likeRepository.save(like);//like추가
 
         park.like();
         //공원 좋아요 수 증가
@@ -51,7 +51,7 @@ public class LikeService {
 
         likeRepository.deleteById(lIdx);//해당하는 lidx삭제
 
-        park.cancelLike();//공원 좋아요 수 감소
+        park.decreaseLike();//공원 좋아요 수 감소
     }
 
     private Park parkNotFoundException(Long pIdx){//해당하는 pidx가 존재하는지 확인

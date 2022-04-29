@@ -25,4 +25,9 @@ public class Good {//리뷰좋아요
     @JoinColumn(name = "r_idx", nullable = false)
     @ManyToOne
     private Review rIdx;
+
+    public Good(Users uIdx, Review rIdx){
+        this.uIdx = uIdx;
+        this.rIdx = rIdx;
+    }
 }

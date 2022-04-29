@@ -63,5 +63,12 @@ public class Review {
 
     }
 
+    public void Good(){
+        this.rLikeCnt += 1;
+    }
+    public void decreaseGood(){
+        this.rLikeCnt -= 1;
+    }
+
 
 }

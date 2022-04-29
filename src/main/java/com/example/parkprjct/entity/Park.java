@@ -77,6 +77,8 @@ public class Park {
         this.pLikeCnt+=1;
     }
 
-    public void cancelLike() { this.pLikeCnt-=1; }
+    public void decreaseLike() {
+        this.pLikeCnt-=1;
     }
+}
 
