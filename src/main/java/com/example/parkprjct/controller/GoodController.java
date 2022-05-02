@@ -25,5 +25,6 @@ public class GoodController {
                          Authentication authentication){
         Users user = (Users) authentication.getPrincipal();
         goodService.checkGood(user, rIdx);
-    }
+    }//
+
 }
