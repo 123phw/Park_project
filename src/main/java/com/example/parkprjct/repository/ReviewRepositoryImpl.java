@@ -2,6 +2,7 @@ package com.example.parkprjct.repository;
 
 
 import com.example.parkprjct.entity.Review;
+import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,16 +25,20 @@ public class ReviewRepositoryImpl extends QuerydslRepositorySupport implements R
     @Override
     public Page<Review> reviewList(Long pIdx, Pageable pageable){
 
-        List<Review> query = queryFactory.selectFrom(review)
-                .where(review.pIdx.pIdx.eq(pIdx)).fetch();
+//        List<Review> query = queryFactory.selectFrom(review)
+//                .where(review.pIdx.pIdx.eq(pIdx)).fetch();
 
-        Long total = queryFactory
-                .select(review.count())
-                .from(review)
-                .where(review.pIdx.pIdx.eq(pIdx))
-                .fetchOne();
+        JPQLQuery<Review> query = queryFactory.selectFrom(review)
+                .where(review.pIdx.pIdx.eq(pIdx));
 
-        return new PageImpl<>(query, pageable, total);
+        List<Review> reviews = this.getQuerydsl().applyPagination(pageable, query).fetch();
+//        Long total = queryFactory
+//                .select(review.count())
+//                .from(review)
+//                .where(review.pIdx.pIdx.eq(pIdx))
+//                .fetchOne();
+
+        return new PageImpl<>(reviews, pageable, query.fetchCount());
 
     }
 
