@@ -29,7 +29,8 @@ public class ReviewRepositoryImpl extends QuerydslRepositorySupport implements R
 //                .where(review.pIdx.pIdx.eq(pIdx)).fetch();
 
         JPQLQuery<Review> query = queryFactory.selectFrom(review)
-                .where(review.pIdx.pIdx.eq(pIdx));
+                .where(review.pIdx.pIdx.eq(pIdx))
+                .orderBy(review.rDate.desc());
 
         List<Review> reviews = this.getQuerydsl().applyPagination(pageable, query).fetch();
 //        Long total = queryFactory
