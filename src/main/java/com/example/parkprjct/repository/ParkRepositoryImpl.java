@@ -46,6 +46,8 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
                 QPark.park.pArea,
                 QPark.park.pLikeCnt,
                 QPark.park.pAvgRate,
+                QPark.park.pGX,
+                QPark.park.pGY,
                 QPark.park.pX,
                 QPark.park.pY)).from(QPark.park);
 
@@ -62,6 +64,8 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
                 QPark.park.pImg,
                 QPark.park.pArea,
                 QPark.park.pAvgRate,
+                QPark.park.pGX,
+                QPark.park.pGY,
                 QPark.park.pX,
                 QPark.park.pY)).from(QPark.park).where(containName(pName));
         //공원이름을 통해 park db를 불러오는 쿼리문
@@ -80,6 +84,8 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
                         QPark.park.pImg,
                         QPark.park.pArea,
                         QPark.park.pAvgRate,
+                        QPark.park.pGX,
+                        QPark.park.pGY,
                         QPark.park.pX,
                         QPark.park.pY))
                 .from(QPark.park)
@@ -98,6 +104,8 @@ public class ParkRepositoryImpl extends QuerydslRepositorySupport implements Par
                         QPark.park.pImg,
                         QPark.park.pArea,
                         QPark.park.pAvgRate,
+                        QPark.park.pGX,
+                        QPark.park.pGY,
                         QPark.park.pX,
                         QPark.park.pY))
                 .from(QPark.park)

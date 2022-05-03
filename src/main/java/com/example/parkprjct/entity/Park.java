@@ -50,12 +50,16 @@ public class Park {
     private BigDecimal pX;
     @Column(name = "p_y")
     private BigDecimal pY;
+    @Column(name = "p_gx")
+    private BigDecimal pGX;
+    @Column(name = "p_gy")
+    private BigDecimal pGY;
 
     @JsonIgnore//Json으로 표현시 제외
     @OneToMany(mappedBy = "pIdx")
     private List<Review> reviews;
 
-    public Park(String pName, String pAddr, String pArea, String pImg, String pSite, String pDesc, int pLikeCnt, BigDecimal pAvgRate, BigDecimal pX, BigDecimal pY) {
+    public Park(String pName, String pAddr, String pArea, String pImg, String pSite, String pDesc, int pLikeCnt, BigDecimal pAvgRate, BigDecimal pGX, BigDecimal pGY, BigDecimal pX, BigDecimal pY) {
         this.pName = pName;
         this.pAddr = pAddr;
         this.pArea = pArea;
@@ -63,6 +67,8 @@ public class Park {
         this.pSite = pSite;
         this.pDesc = pDesc;
         this.pAvgRate = pAvgRate;
+        this.pGX = pGX;
+        this.pGY = pGY;
         this.pX = pX;
         this.pY = pY;
         this.pLikeCnt = pLikeCnt;

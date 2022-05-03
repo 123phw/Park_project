@@ -18,6 +18,8 @@ public class ParkDto {
     //private String pSite;
     //private String pDesc;
     private BigDecimal pAvgRate;
+    private BigDecimal pGX;
+    private BigDecimal pGY;
     private BigDecimal pX;
     private BigDecimal pY;
 
@@ -31,6 +33,8 @@ public class ParkDto {
         //this.pSite = park.getPSite();
         //this.pDesc = park.getPDesc();
         this.pAvgRate = park.getPAvgRate();
+        this.pGX = park.getPGX();
+        this.pGY = park.getPGY();
         this.pX = park.getPX();
         this.pY = park.getPY();
     }

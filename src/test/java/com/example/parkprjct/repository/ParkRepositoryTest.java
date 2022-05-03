@@ -4,7 +4,6 @@ import com.example.parkprjct.entity.Park;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,8 +23,9 @@ public class ParkRepositoryTest {
     @Autowired
     ParkRepository parkRepository;
 
-//    @Test
+    //@Test
 //    public void save() throws Exception{
+//        parkRepository.deleteAll();
 //        BigDecimal value = new BigDecimal("2.0");
 //        BigDecimal xvalue = new BigDecimal("0.0");
 //        BigDecimal yvalue = new BigDecimal("0.0");
@@ -33,8 +33,9 @@ public class ParkRepositoryTest {
 //        parkRepository.save(park);
 //    }
 
-    @Test
+    //@Test
     public void parkinfo_save() throws IOException {
+
 
         String result = "";
         //String line = "";
@@ -58,20 +59,43 @@ public class ParkRepositoryTest {
             JSONArray infoArr = (JSONArray) SearchParkInfoService.get("row");
 
             String pName, pAddr, pImg, pArea, pSite, pDesc;
+            BigDecimal pGX, pGY;
             BigDecimal pX, pY, pAvgRate;
             int pLikeCnt = 0;
             pAvgRate = new BigDecimal("0.0");
 
             for (int i = 0; i < infoArr.size(); i++) {
+
+
                 JSONObject tmp = (JSONObject) infoArr.get(i);
 
-                pName = (String)tmp.get("P_PARK");  pAddr = (String)tmp.get("P_ADDR");  pImg = (String) tmp.get("P_IMG");
-                pArea = (String)tmp.get("P_ZONE");  pSite = (String)tmp.get("TEMPLATE_URL");    pDesc = (String)tmp.get("P_LIST_CONTENT");
-                pX = new BigDecimal((String)tmp.get("LONGITUDE"));  pY = new BigDecimal((String)tmp.get("LATITUDE"));
+
+                pName = (String) tmp.get("P_PARK");
+                pAddr = (String) tmp.get("P_ADDR");
+
+                pImg = (String) tmp.get("P_IMG");
+                pArea = (String) tmp.get("P_ZONE");
+                pSite = (String) tmp.get("TEMPLATE_URL");
+                pDesc = (String) tmp.get("P_LIST_CONTENT");
+                if(((String) tmp.get("G_LONGITUDE")).isEmpty()){
+                    pGX = new BigDecimal("0.0");
+                }
+                else{
+                    pGX = new BigDecimal((String) tmp.get("G_LONGITUDE"));
+                }
+                if(((String) tmp.get("G_LATITUDE")).isEmpty()){
+                    pGY = new BigDecimal("0.0");
+                }
+                else {
+                    pGY = new BigDecimal((String) tmp.get("G_LATITUDE"));
+                }
+                pX = new BigDecimal((String) tmp.get("LONGITUDE"));
+                pY = new BigDecimal((String) tmp.get("LATITUDE"));
                 //park객체 생성후 해당객체를 db에 저장
 
 
-                Park parkObj = new Park(pName, pAddr, pArea, pImg, pSite, pDesc, pLikeCnt,pAvgRate,pX, pY);
+
+                Park parkObj = new Park(pName, pAddr, pArea, pImg, pSite, pDesc, pLikeCnt,pAvgRate, pGX, pGY, pX, pY);
                 parkRepository.save(parkObj);//DB에 파싱된 json데이터 넣기
 
 
