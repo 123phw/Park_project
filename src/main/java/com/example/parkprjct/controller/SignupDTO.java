@@ -7,4 +7,6 @@ import lombok.Data;
 public class SignupDTO {
     @JsonProperty("uNickname")
     private String uNickname;
+    @JsonProperty("gImg")
+    private String gImg;
 }

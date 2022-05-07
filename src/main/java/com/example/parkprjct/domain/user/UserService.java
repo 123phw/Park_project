@@ -47,7 +47,7 @@ public class UserService implements UserDetailsService{
 
     @Transactional
     public Users signupMock(SignupDTO signupDTO, String token) {
-        Users user = Users.builder().gId(token).uNickname(signupDTO.getUNickname()).build();
+        Users user = Users.builder().gId(token).uNickname(signupDTO.getUNickname()).gImg(signupDTO.getGImg()).build();
         userRepository.save(user);
         return user;
     }
@@ -61,7 +61,7 @@ public class UserService implements UserDetailsService{
             }
             
 
-    Users user = Users.builder().gId(firebaseToken.getUid()).uNickname(signupDTO.getUNickname()).build();
+    Users user = Users.builder().gId(firebaseToken.getUid()).uNickname(signupDTO.getUNickname()).gImg(signupDTO.getGImg()).build();
             userRepository.save(user);
             return user;
         } catch (FirebaseAuthException e) {
